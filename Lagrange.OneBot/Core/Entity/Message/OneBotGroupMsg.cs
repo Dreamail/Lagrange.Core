@@ -5,7 +5,7 @@ using Lagrange.OneBot.Core.Message;
 namespace Lagrange.OneBot.Core.Entity.Message;
 
 [Serializable]
-public class OneBotGroupMsg(uint selfId, uint groupUin, List<OneBotSegment> message, BotGroupMember member) : OneBotEntityBase(selfId, "message")
+public class OneBotGroupMsg(uint selfId, uint groupUin, BotGroupMember member) : OneBotEntityBase(selfId, "message")
 {
     [JsonPropertyName("message_type")] public string MessageType { get; set; } = "group";
 
@@ -19,7 +19,7 @@ public class OneBotGroupMsg(uint selfId, uint groupUin, List<OneBotSegment> mess
     
     [JsonPropertyName("anonymous")] public object? Anonymous { get; set; } = null;
 
-    [JsonPropertyName("message")] public List<OneBotSegment> Message { get; set; } = message;
+    [JsonPropertyName("message")] public List<OneBotSegment> Message { get; set; } = new();
 
     [JsonPropertyName("raw_message")] public string RawMessage { get; set; } = string.Empty;
 
